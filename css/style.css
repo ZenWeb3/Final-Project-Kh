@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* 
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  background-color: #1d9bf0; 
+}
+.custom-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+} 
+  */
+
+#userName h1 {
+  font-size: 25px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #1d9bf0;
+}
+
+#userName {
+  padding: 100px 0 0 0;
+  text-align: center;
+}
+
+.fw-bold{
+  font-weight:400 !important;
+}
+
+.avatar {
+  width: 30px; /* Size of the avatar */
+  height: 30px;
+  border-radius: 50%; /* Circular shape */
+  overflow: hidden; /* Clip overflow */
+}
+
+.avatar img {
+  width: 100%; /* Make image cover the avatar */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.tooltip-dropdown {
+  position: absolute;
+  top: 45px !important; /* Position below the toggle link */
+  left: 100%;
+  transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.nav-item.dropdown.show .tooltip-dropdown {
+  display: block; /* Show on dropdown open */
+}
+
+.tooltip-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -9px; /* Position arrow above the dropdown */
+  left: 65%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #080707 transparent; /* Arrow color */
+}
+
+.padding-style{
+  padding: 0 5%;
+}
+
+.fa-sign-out-alt{
+  color: red !important;
+}
+
+#dropdownProfile{
+  color: #1d9bf0;
+}
+
+#wrapper{
+  height: 100vh;
+}
+.custom-sidebar {
+  width: 20%;
+  height: 100vh;
+  background-color: #7c4646;
+}
+
+.active{
+  background-color: #080707 !important;
+  color:white !important;
+}
+
+.active path{
+  stroke: white !important;
+  fill:white !important;
+}
+
+.active rect {
+  stroke: white !important;
+}
+
+.navbar-brand{
+  font-weight:700;
+}
+
+

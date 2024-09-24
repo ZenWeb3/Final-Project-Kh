@@ -1,0 +1,43 @@
+input[type="date"]::-webkit-datetime-edit {
+  color: #83acd8;
+}
+
+select option[value=""][disabled] {
+  color: #83acd8 !important;
+}
+
+select option:not([disabled]) {
+  color: black;
+}
+
+.sec-style2 {
+  height: auto !important;
+}
+
+.input-group .input-group-text {
+  pointer-events: none;
+}
+
+.date-style {
+  cursor: pointer;
+}
+
+.form-padding2 {
+  padding: 120px 100px 120px !important;
+}
+/* .input-style{
+    gap:24px !important;
+}
+
+.input-style {
+    margin-bottom: 15px;
+  } */
+.custom-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.custom-col {
+  flex: 1;
+}
+
