@@ -1,19 +1,11 @@
 window.onload = () => {
 
-    //get looged in user email 
-    let currentUserEmail = localStorage.getItem("currentUserEmail");
-
-    //get all registered users
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    //find the user by matching email
-    let currentUser = users.find(users => users.email === currentUserEmail)
+    //fetch user details from local storage
+    let firstName = localStorage.getItem("firstName") 
+    let lastName = localStorage.getItem("lastName") 
 
     //if user is found display the full name
-    if (currentUser) {
-        let firstName = currentUser.firstName;
-        let lastName = currentUser.lastName;
-
+    if (firstName && lastName) {
         //insert the name into the userName div
         let userNameDiv = document.getElementById("userName");
         let dropdownProfileDiv = document.getElementById("dropdownProfile");

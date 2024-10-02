@@ -21,9 +21,9 @@ body{
   */
 
 #userName h1 {
-  font-size: 25px;
+  font-size: 24px;
   margin-bottom: 30px;
-  font-weight: 700;
+  font-weight: 500;
   color: #1d9bf0;
 }
 
@@ -116,4 +116,7 @@ body{
   font-weight:700;
 }
 
+.mainContent-bg{
+  background-color: rgba(88, 134, 166, 0.125);
+}
 

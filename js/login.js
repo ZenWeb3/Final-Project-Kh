@@ -4,34 +4,47 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   //collecting inputed data
   let loginEmail = document.getElementById("email").value.trim();
   let loginPassword = document.getElementById("password").value.trim();
+  let rememberMe = document.getElementById("rememberMe").checked
 
-  //checking for empty input field
+  //validate input
   if (!loginEmail || !loginPassword) {
-    alert("Please fill in all fields.");
+    alert("please enter both email and password")
     return;
   }
 
-  // retrive data fro, localStorage
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+  //convert to x-www-form-urlencoded format
+  const formBody = `Email_ID=${encodeURIComponent(loginEmail)}&password=${encodeURIComponent(loginPassword)}`;
 
-  //hashing the inputed login password
-  let hashedLoginPassword = btoa(loginPassword);
 
-  //checking if any user matches the login details
-  let matchingUser = users.some(
-    (users) =>
-      users.email === loginEmail && users.userPassword === hashedLoginPassword
-  );
+  // send login data to backend for validation
+  fetch ("https://attendance-management-system-api.onrender.com/login", {
+    method: "POST",
+    headers: {
+      "content-type":"application/x-www-form-urlencoded"
+    },
+    body: formBody
+  } )
+  .then(async response => {
+    const data = await response.json();
 
-  if (matchingUser) {
-    alert("Login Successful");
+    // if successful save token
+    if (data.token) {
+      alert("Login Successful");
 
-    // redirect user to dashboard
-    window.location.href = "./index.html";
+      //store token based on Remember Me checkbox
+      if (rememberMe) {
+        localStorage.setItem("userToken", data.token);
+      } else {
+        sessionStorage.setItem("userToken", data.token)
+      }
 
-    //save the logged in email to localStorage
-    localStorage.setItem("currentUserEmail", loginEmail)
-  } else {
-    alert("Incorrect Username or Password. Please try again");
-  }
+      window.location.href = './index.html'
+    } else {
+      alert("login failed: Incorrect Email or Password")
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error.message);
+    alert("An error occured during login" + error.message)
+  })
 });

@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-content {
+  padding: 32px 60px 78px;
+}
+
+.parent-style {
+  height: calc(100vh - 110px);
+  width: 100%;
+  background-color: black;
+  border: 1px solid #e3f3fd;
+  border-radius: 12px;
+}
+
+.child-style {
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(170, 217, 249, 1),
+    rgba(132, 203, 252, 1)
+  );
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  top: 0;
+}
+
+.profileAvatar {
+  border: 3px solid white;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow:hidden;
+  position: relative;
+  top: 10px;
+  margin: 0 auto;
+}
+
+.profileAvatar img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.link-div {
+  height: 30px !important;
+  width: 30px !important;
+  background-color: white !important;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 56px;
+  z-index: 1;
+}
+
+.link-div svg {
+  width: 100%;
+}
+
+.link-div1 {
+  height: 30px !important;
+  width: 30px !important;
+  background-color: white !important;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.icon-style {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  position: absolute;
+  top: 50px;
+  right:20px;
+  justify-content: end;
+}
+
+.link-div1 svg {
+  object-fit: contain;
+  width: 100%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 450px;
+    height: 500px;
+    text-align: center;
+  }
+  
+  .close {
+    position: absolute; 
+    top: 10px; 
+    right: 10px;
+    color: black;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .cropper-modal{
+    background-color: white !important;
+  }
+  
+  .userPaddingStyle{
+    margin-top: 3rem;
+  }
+
+.usernameStyle{
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 !important;
+}
+
+.userRoleStyle{
+  font-size: 24px;
+  font-weight: 400;
+  color:  #2C5B8C;
+  text-transform: capitalize;
+}
+
+input[disabled], select[disabled] {
+  background-color: white !important; 
+  border: none !important; 
+  box-shadow: none; 
+  pointer-events: none; 
+}
+
+select[disabled] {
+  appearance: none; 
+  -moz-appearance: none; 
+  -webkit-appearance: none;
+  background-image: none; 
+}
+
+input, select {
+  background-color: white;
+  border: 1px solid #ccc; 
+}
+
+input:focus, select:focus {
+  outline: none;
+  border: 1px solid #007bff;
+}
+
+.form-style{
+  padding: 0 5%;
+}

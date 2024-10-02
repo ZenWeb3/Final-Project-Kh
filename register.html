@@ -14,7 +14,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/register.css" />
     <link rel="stylesheet" href="./css/login.css" />
     <script defer src="./js/validation.js"></script>
   </head>
@@ -60,11 +60,16 @@
           <div class="custom-col">
             <label for="dob">Date of Birth</label>
             <div class="input-group">
-                <input type="date" class="form-control date-style" id="dob" required />
-                <span>
-                  <i class="bi bi-calendar"></i>
-                </span>
-              </div>
+              <input
+                type="date"
+                class="form-control date-style"
+                id="dob"
+                required
+              />
+              <span>
+                <i class="bi bi-calendar"></i>
+              </span>
+            </div>
             <div class="invalid-feedback">Please enter your date of birth.</div>
           </div>
           <div class="custom-col">
@@ -82,8 +87,14 @@
         <!-- Email, Password, and Confirm Password -->
         <div class="input-margin input-style input-margin">
           <label for="email">Onpassive Email ID</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter
- Onpassive Email ID" required />
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter
+ Onpassive Email ID"
+            required
+          />
           <div class="invalid-feedback">Please enter a valid email.</div>
         </div>
 
@@ -95,7 +106,7 @@
               class="form-control"
               id="password"
               placeholder="Enter Password"
-              minlength="6"
+              minlength="7"
               required
             />
             <div class="invalid-feedback">
@@ -109,7 +120,7 @@
               class="form-control"
               id="confirmPassword"
               placeholder="Confirm Password"
-              minlength="6"
+              minlength="7"
               required
             />
             <div class="invalid-feedback">Please confirm your password.</div>
@@ -135,15 +146,14 @@
             <label for="role">Role</label>
             <select class="form-select" id="role" required>
               <option value="" disabled selected>Select Role</option>
-              <option value="frontend">Frontend Developer</option>
-              <option value="backend">Backend Developer</option>
-              <option value="devops">DevOps Engineer</option>
-              <option value="cybersecurity">Cybersecurity Specialist</option>
-              <option value="uiux">UI/UX Designer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="DevOps Engineer">DevOps Engineer</option>
+              <option value="Cybersecurity Specialist">Cybersecurity Specialist</option>
+              <option value="UI/UX Designer">UI/UX Designer</option>
             </select>
             <div class="invalid-feedback">Please select your role.</div>
           </div>
-          
         </div>
 
         <button
@@ -153,7 +163,9 @@
           Register
         </button>
 
-        <p class="text-xl-center">Already have account? <a href="./login.html">Login here</a></p>
+        <p class="text-xl-center">
+          Already have account? <a href="./login.html">Login here</a>
+        </p>
       </form>
     </div>
 

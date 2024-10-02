@@ -8,41 +8,57 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   let gender = document.getElementById("gender").value.trim();
   let email = document.getElementById("email").value.trim();
   let contact = document.getElementById("contact").value.trim();
-  let role = document.getElementById("role").value.trim();
+  let role = document.getElementById("role").value;
   let password = document.getElementById("password").value.trim();
 
-  //checking for empty input field
-  if (!firstName || !lastName || !dob || !gender || !email || !contact || !role || !password ) {
-    alert("Please fill in all fields.")
+  console.log("Selected Role:", role);
+
+
+  // Checking for empty input fields
+  if (!firstName || !lastName || !dob || !gender || !email || !contact || !role || !password) {
+    alert("Please fill in all fields.");
     return;
   }
 
-  // temporary password hashing using btoa method
-  let hashedPassword = btoa(password);
-
-  //object for new users
+  // Object for new users
   let newUser = {
-    "firstName" : firstName,
-    "lastName" : lastName,
-    "dob" : dob,
-    "gender" : gender,
-    "email" : email,
-    "contact" : contact,
-    "role" : role,
-    "userPassword" : hashedPassword
-  }
+    First_Name: firstName,
+    Last_Name: lastName,
+    Date_Of_Birth: dob,
+    Gender: gender,
+    Onpassive_Email: email,
+    password: password,
+    Contact_No: contact,
+    Role: role
+  };
 
-  //get users from localStorage o  r initialize a new array
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+  // Send data to backend API
+  fetch("https://attendance-management-system-api.onrender.com/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUser)
+})
+.then(response => response.json())
+.then(data => {
+    console.log("Response from server:", data.Role); // Log the entire response
 
-  //push new users to the array
-  users.push(newUser);
-  
-  //save the updated array back to the localStorage
-  localStorage.setItem("users", JSON.stringify(users));
+    // Adjust this based on the actual response structure
+    if (data) {
+     // Store the first and last name in localStorage or sessionStorage
+      localStorage.setItem("firstName", firstName);
+      localStorage.setItem("lastName", lastName);
+      localStorage.setItem("userRole", role)
+      alert("You have successfully registered! Redirecting to login.");
+      window.location.href = './login.html';
+    } else {
+      alert("Registration failed: " + (data.message || "Unknown error"));
+    }
+})
+.catch(error => {
+    console.error("Error:", error);
+    alert("An error occurred during registration. Please try again.");
+});
 
-  alert("You have successfully registered, Data has been saved");
-
-  //redirect to the login 
-  window.location.href = './login.html';
 });
