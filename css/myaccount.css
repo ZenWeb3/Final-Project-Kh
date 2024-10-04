@@ -113,6 +113,14 @@
   font-weight: bold;
 }
 
+.modalhead{
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  margin: 0 5%;
+  align-items: center;
+}
+
 .cropper-modal {
   background-color: white !important;
 }

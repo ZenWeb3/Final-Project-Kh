@@ -1,14 +1,12 @@
 
 let cropper;
 
-
-// Function to fetch and display the user's avatar
+// Fetch user profile photo
 function fetchAvatar() {
   const getToken = () => {
     return localStorage.getItem("userToken") || sessionStorage.getItem("userToken");
   };
   const token = getToken();
-  console.log(token)
 
   fetch("https://attendance-management-system-api.onrender.com/get_profile_picture", {
     method: "GET",
@@ -18,8 +16,13 @@ function fetchAvatar() {
   })
     .then(response => response.json())
     .then(data => {
-      const avatarImage = document.getElementById("avatarImage");
-      avatarImage.src = data.picture_url || `https://www.w3schools.com/howto/img_avatar.png`; 
+      const avatarUrl = data.picture_url || "https://www.w3schools.com/howto/img_avatar.png";
+    
+      // Update all avatar images across the page
+      const avatarImages = document.querySelectorAll(".userImage");
+      avatarImages.forEach(img => {
+        img.src = avatarUrl;
+      });
     })
     .catch(error => {
       console.error("Error fetching avatar:", error);
@@ -68,12 +71,11 @@ function closeModal() {
 // Function to upload the cropped image
 function cropImage() {
   const canvas = cropper.getCroppedCanvas();
-  const avatarImage = document.getElementById("avatarImage");
 
   // Convert the cropped canvas to a Blob and append it to FormData
   canvas.toBlob((blob) => {
     const formData = new FormData();
-    formData.append("image", blob, "avatar.png"); // 'avatar' is the key expected by the backend
+    formData.append("image", blob, "avatar.png"); // 'image' is the key expected by the backend
 
     // Get the token for authorization
     const getToken = () => {
@@ -91,10 +93,12 @@ function cropImage() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.msg)
         if (data.picture_url) {
           // Update the displayed avatar image with the new URL
-          avatarImage.src = data.picture_url; // Use the returned URL for the image
+          const avatarImages = document.querySelectorAll(".userImage");
+          avatarImages.forEach(img => {
+            img.src = data.picture_url;
+          });
 
           alert("Avatar uploaded successfully!");
           closeModal(); // Close the modal after saving
@@ -109,16 +113,20 @@ function cropImage() {
   }, "image/png"); // Convert canvas to Blob in PNG format
 }
 
-
 // Function to update the avatar (PUT request)
 function updateAvatar() {
   const canvas = cropper.getCroppedCanvas();
-  const token = getToken();
 
   // Convert the cropped canvas to an image Blob for upload
   canvas.toBlob((blob) => {
     const formData = new FormData();
-    formData.append("avatar", blob); // 'avatar' is the field name the API expects
+    formData.append("image", blob); // 'image' is the field name the API expects
+
+    // Get the token for authorization
+    const getToken = () => {
+      return localStorage.getItem("userToken") || sessionStorage.getItem("userToken");
+    };
+    const token = getToken();
 
     // Send the PUT request to update the avatar
     fetch("https://attendance-management-system-api.onrender.com/update_profile_pic", {
@@ -132,8 +140,10 @@ function updateAvatar() {
       .then(data => {
         if (data.picture_url) {
           // Optionally, reload the avatar to reflect the update
-          const avatarImage = document.getElementById("avatarImage");
-          avatarImage.src = data.picture_url; // Update with the new avatar URL
+          const avatarImages = document.querySelectorAll(".userImage");
+          avatarImages.forEach(img => {
+            img.src = data.picture_url;
+          });
 
           alert("Avatar updated successfully!");
           closeModal(); // Close modal after updating
@@ -150,6 +160,7 @@ function updateAvatar() {
 
 // Call fetchAvatar on page load to display the user's current avatar
 document.addEventListener("DOMContentLoaded", fetchAvatar);
+
 
 let accountUserNameDiv = document.getElementById("accountUserNameDiv");
 let accountUserRoleDiv = document.getElementById("accountUserRoleDiv");

@@ -54,8 +54,9 @@
                 <!-- Avatar Image -->
                 <div class="avatar me-2">
                   <img
+                  class="userImage"
                     src="https://www.w3schools.com/howto/img_avatar.png"
-                    alt="Avatar"
+                    alt="avatarImage"
                   />
                 </div>
               </a>
@@ -289,7 +290,7 @@
               <img
                 src="https://www.w3schools.com/howto/img_avatar.png"
                 alt="Avatar"
-                id="avatarImage"
+                class="userImage"
               />
               <a
                 href="javascript:void(0)"
@@ -335,8 +336,10 @@
           </div>
           <div id="imageModal" class="modal">
             <div class="modal-content">
-              <span class="close" onclick="closeModal()">&times;</span>
-              <p style="text-align: start">Profile Picture</p>
+              <div class="modalhead">
+                <span class="close" onclick="closeModal()">&times;</span>
+                 <p style="text-align: start">Profile Picture</p>
+              </div>
               <div style="width: 100%">
                 <img id="imageCropper" style="max-width: 100%" />
               </div>

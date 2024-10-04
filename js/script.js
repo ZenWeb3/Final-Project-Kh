@@ -24,9 +24,11 @@ window.onload = () => {
 
   if (!userLoggedIn) {
     alert("Login to continue.");
+    window.location.href = './login.html'
 
     setTimeout(() => {
       alert("Redirecting please wait");
-    }, 500);
+    }, 1000);
   }
 };
+
