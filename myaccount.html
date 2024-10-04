@@ -73,7 +73,7 @@
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#"
+                  <a class="dropdown-item" href="javaScript:void(0)" id="logoutBtn"
                     ><i class="fas fa-sign-out-alt"></i>
                     <span class="fw-bold">Logout</span></a
                   >
@@ -222,7 +222,7 @@
                 </svg>
               </a>
 
-              <a href="#" class="link-div1">
+              <a href="javaScript:void(0)" class="link-div1" id="changePassword">
                 <svg
                   width="24"
                   height="24"
@@ -419,6 +419,27 @@
                 </div>
               </div>
             </form>
+
+            <div id="passwordResetForm" style="display: none; margin-top: 20px;">
+              <form id="resetPasswordForm">
+                <div class="mb-3">
+                  <label for="oldPassword" class="form-label">Old Password</label>
+                  <input type="password" class="form-control" id="oldPassword" placeholder="Enter Old Password" required>
+                </div>
+                <div class="mb-3">
+                  <label for="newPassword" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="newPassword" placeholder="Enter New Password" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Enter Confirm Password" required>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button type="button" id="cancelBtn" class="btn btn-secondary me-2">Cancel</button>
+                  <button type="submit" id="resetPasswordBtn" class="btn btn-primary">Reset Password</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

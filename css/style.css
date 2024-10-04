@@ -89,13 +89,13 @@ body{
   color: #1d9bf0;
 }
 
-#wrapper{
+/* #wrapper{
   height: 100vh;
-}
+} */
 .custom-sidebar {
   width: 20%;
-  height: 100vh;
-  background-color: #7c4646;
+  /* height: 100vh; */
+  overflow-y: hidden;
 }
 
 .active{
