@@ -1,7 +1,7 @@
 
 let cropper;
 
-// Fetch user profile photo
+// Fetch user profile photo (GET request)
 function fetchAvatar() {
   const getToken = () => {
     return localStorage.getItem("userToken") || sessionStorage.getItem("userToken");
@@ -16,7 +16,7 @@ function fetchAvatar() {
   })
     .then(response => response.json())
     .then(data => {
-      const avatarUrl = data.picture_url || "https://www.w3schools.com/howto/img_avatar.png";
+      const avatarUrl = data.picture_url || "https://www.w3schools.com/howto/img_avatar.png"; // a condition to display the unique pfp if it exists or the default
     
       // Update all avatar images across the page
       const avatarImages = document.querySelectorAll(".userImage");

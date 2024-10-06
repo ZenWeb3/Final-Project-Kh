@@ -44,7 +44,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
               <a
-                class="nav-link d-flex align-items-center"
+                class="nav-link d-flex align-items-center dropdown-toggle"
                 href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
@@ -338,7 +338,7 @@
             <div class="modal-content">
               <div class="modalhead">
                 <span class="close" onclick="closeModal()">&times;</span>
-                 <p style="text-align: start">Profile Picture</p>
+                 <p class="modaltext" style="text-align: start">Profile Picture</p>
               </div>
               <div style="width: 100%">
                 <img id="imageCropper" style="max-width: 100%" />
@@ -437,7 +437,7 @@
                   <label for="confirmPassword" class="form-label">Confirm Password</label>
                   <input type="password" class="form-control" id="confirmPassword" placeholder="Enter Confirm Password" required>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end" style="margin-bottom: 20px !important;">
                   <button type="button" id="cancelBtn" class="btn btn-secondary me-2">Cancel</button>
                   <button type="submit" id="resetPasswordBtn" class="btn btn-primary">Reset Password</button>
                 </div>

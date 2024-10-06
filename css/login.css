@@ -9,6 +9,7 @@
 body {
   display: flex;
   margin: 0;
+  height: auto !important;
 }
 
 .form-padding {
@@ -55,7 +56,8 @@ button:hover {
 }
 
 .sec-style{
-    height: 100vh !important;
+    height: auto !important;
+    overflow-y: hidden;
 }
 
 .date-style{

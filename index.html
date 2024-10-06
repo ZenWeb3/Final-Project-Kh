@@ -13,6 +13,7 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
     <!-- FontAwesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -39,7 +40,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
               <a
-                class="nav-link d-flex align-items-center"
+                class="nav-link d-flex align-items-center dropdown-toggle"
                 href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
@@ -49,14 +50,14 @@
                 <!-- Avatar Image -->
                 <div class="avatar me-2">
                   <img
-                   class="userImage"
+                    class="userImage"
                     src="https://www.w3schools.com/howto/img_avatar.png"
                     alt="Avatar"
                   />
                 </div>
               </a>
               <ul
-                class="dropdown-menu  tooltip-dropdown"
+                class="dropdown-menu tooltip-dropdown"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <div id="dropdownProfile" class="text-center">John Doe</div>
@@ -69,7 +70,10 @@
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="javaScript:void(0)" id="logoutBtn"
+                  <a
+                    class="dropdown-item"
+                    href="javaScript:void(0)"
+                    id="logoutBtn"
                     ><i class="fas fa-sign-out-alt"></i>
                     <span class="fw-bold">Logout</span></a
                   >
@@ -112,7 +116,7 @@
           </a>
           <a
             href="./studentreport.html"
-            class="text-dark text-decoration-none fw-bold list-group-item list-group-item-action bg-transparent second-text "
+            class="text-dark text-decoration-none fw-bold list-group-item list-group-item-action bg-transparent second-text"
           >
             <svg
               width="24"
@@ -150,7 +154,7 @@
           </a>
           <a
             href="./myaccount.html"
-            class="text-dark text-decoration-none list-group-item fw-bold list-group-item-action bg-transparent second-text "
+            class="text-dark text-decoration-none list-group-item fw-bold list-group-item-action bg-transparent second-text"
           >
             <svg
               width="24"
@@ -189,15 +193,126 @@
           </a>
         </div>
       </div>
-      <div class="mainContent-bg w-100"></div>
+      <div class="mainContent-bg w-100">
+        <div class="container mt-4 statistics-container">
+          <div class="row">
+            <!-- On Time Percentage Card -->
+            <div class="stat-card">
+              <p>On Time Percentage</p>
+              <div class="d-flex align-items-center gap-5">
+                <div>
+                  <p>October</p>
+                  <h1 class="percentage fw-bolder">65%</h1>
+                </div>
+                <canvas id="onTimeChart"></canvas>
+              </div>
+              <div class="d-flex gap-2">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1_645)">
+                  <path d="M9.25866 18.8739L9.25847 18.8737C9.07081 18.6736 8.95624 18.4004 8.95624 18.1015C8.95624 17.8023 9.07055 17.5285 9.25751 17.3295C9.33087 17.2513 9.41573 17.1844 9.50951 17.1318V16.6132H2.38481C2.10238 16.6132 1.89439 16.3731 1.89439 16.1039V3.07808H1.87705C1.36167 3.07808 1.02507 2.7648 0.880564 2.38203L0.880448 2.38173C0.827088 2.23969 0.8 2.08799 0.8 1.93904C0.8 1.79018 0.82692 1.63857 0.880492 1.49624L0.880569 1.49603C1.0251 1.11331 1.36159 0.800052 1.87698 0.800052H18.1229C18.6383 0.800052 18.9749 1.11334 19.1194 1.49636C19.1194 1.49638 19.1194 1.49639 19.1195 1.4964L18.9323 1.56699C18.9774 1.68651 19 1.81423 19 1.93935C19 2.06447 18.9773 2.19234 18.9323 2.31141L9.25866 18.8739ZM9.25866 18.8739C9.4458 19.073 9.70806 19.2 9.99994 19.2C10.2919 19.2 10.5542 19.0729 10.7418 18.8731L10.596 18.7362L10.7418 18.8731C10.9292 18.6736 11.0438 18.4003 11.0438 18.1015C11.0438 17.8024 10.9295 17.5285 10.7425 17.3295C10.6691 17.2514 10.5843 17.1844 10.4905 17.1318V16.6132H17.6152C17.8976 16.6132 18.1056 16.3731 18.1056 16.104V3.07809L9.25866 18.8739ZM18.2075 2.01148L18.2074 2.01175C18.2014 2.02768 18.1928 2.03807 18.1834 2.0447C18.1747 2.05078 18.1571 2.05961 18.1227 2.05961H1.87671C1.84217 2.05961 1.82464 2.05078 1.81606 2.04474C1.80672 2.03816 1.79804 2.02777 1.79195 2.01162L1.60479 2.08213L1.7921 2.012C1.78568 1.99486 1.78062 1.96956 1.78062 1.93917C1.78062 1.90861 1.78559 1.88367 1.79206 1.86644L1.60479 1.79621L1.792 1.86659C1.79799 1.85066 1.80662 1.84027 1.81603 1.83364C1.82466 1.82755 1.84224 1.81873 1.87671 1.81873H18.1227C18.1571 1.81873 18.1746 1.82754 18.1832 1.8336C18.1925 1.84015 18.2012 1.8505 18.2073 1.86657C18.2138 1.88442 18.2188 1.9095 18.2188 1.93946C18.2188 1.97012 18.2138 1.99486 18.2075 2.01148ZM9.95989 18.0407C9.97172 18.0281 9.98502 18.0225 9.99687 18.0217H10.0028C10.0154 18.0226 10.0289 18.0285 10.0403 18.0407C10.0531 18.0543 10.063 18.0755 10.063 18.1016C10.063 18.1284 10.0527 18.1501 10.0406 18.1633C10.0289 18.1755 10.0144 18.1814 10.0001 18.1814C9.98607 18.1814 9.97137 18.1755 9.9594 18.163C9.94748 18.1501 9.93724 18.1286 9.93724 18.1016C9.93724 18.0755 9.94713 18.0543 9.95989 18.0407ZM2.87509 3.0782H17.1245V15.5944H2.87509V3.0782Z" fill="url(#paint0_linear_1_645)" stroke="url(#paint1_linear_1_645)" stroke-width="0.4"/>
+                  <path d="M8.7886 10.9565L8.78867 10.9566C8.93942 11.099 9.1724 11.0975 9.32103 10.9469L8.7886 10.9565ZM8.7886 10.9565L3.99756 6.42077L3.99755 6.42076M8.7886 10.9565L3.99755 6.42076M14.4255 12.4917C14.442 12.3642 14.5142 12.2558 14.6153 12.1939L11.2302 9.0149L9.32109 10.9468L15.8328 11.6136L16.1134 12.5665L16.1135 12.5668C16.1296 12.622 16.1347 12.6815 16.127 12.7416L16.1269 12.7419C16.0985 12.9601 15.9057 13.1235 15.6863 13.0911L15.686 13.091L14.7572 12.9516L14.7718 12.8526L14.757 12.9515L14.7571 12.9515C14.5394 12.9193 14.3972 12.7089 14.4255 12.4917ZM14.4255 12.4917L14.5246 12.5046L14.4255 12.4916C14.4255 12.4917 14.4255 12.4917 14.4255 12.4917ZM3.99755 6.42076C3.83909 6.27071 3.82614 6.01549 3.96574 5.84815L3.96578 5.8481M3.99755 6.42076L3.96578 5.8481M3.96578 5.8481C4.1087 5.677 4.35871 5.66106 4.52067 5.81424L4.52071 5.81427M3.96578 5.8481L4.52071 5.81427M4.52071 5.81427L9.04184 10.0942M4.52071 5.81427L9.04184 10.0942M9.04184 10.0942L10.9494 8.16444L9.04184 10.0942ZM11.4803 8.15421C11.327 8.01001 11.0949 8.01665 10.9496 8.16423L11.4803 8.15421ZM11.4803 8.15421L15.107 11.5603C15.1511 11.4614 15.2328 11.3802 15.3425 11.3439M11.4803 8.15421L15.8328 11.6134C15.7707 11.4015 15.5537 11.2738 15.3425 11.3439M15.3425 11.3439C15.3424 11.3439 15.3424 11.3439 15.3423 11.3439L15.3739 11.4388L15.3425 11.3439Z" fill="url(#paint2_linear_1_645)" stroke="url(#paint3_linear_1_645)" stroke-width="0.2"/>
+                  </g>
+                  <defs>
+                  <linearGradient id="paint0_linear_1_645" x1="10" y1="1" x2="10" y2="19" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF9C8E"/>
+                  <stop offset="1" stop-color="#F5533D"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_1_645" x1="10" y1="1" x2="10" y2="19" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF9C8E"/>
+                  <stop offset="1" stop-color="#F5533D"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_1_645" x1="9.99988" y1="12.9951" x2="9.99988" y2="5.80885" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF9C8E"/>
+                  <stop offset="1" stop-color="#F5533D"/>
+                  </linearGradient>
+                  <linearGradient id="paint3_linear_1_645" x1="9.99988" y1="12.9951" x2="9.99988" y2="5.80885" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF9C8E"/>
+                  <stop offset="1" stop-color="#F5533D"/>
+                  </linearGradient>
+                  <clipPath id="clip0_1_645">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                  </svg>                  
+              <p class="comparison down">-25% Compared to August</p>
+              </div>
+            </div>
+
+            <!-- Late Percentage Card -->
+            <div class="stat-card">
+              <p>Late  Percentage</p>
+              <div class="d-flex align-items-center gap-5">
+                <div>
+                  <p>October</p>
+                  <h1 class="percentage fw-bolder">35%</h1>
+                </div>
+                <canvas id="latePercentageChart"></canvas>
+              </div>
+              <div class="d-flex gap-2">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1_657)">
+                  <path d="M9.25866 18.8739L9.25847 18.8737C9.07081 18.6736 8.95624 18.4004 8.95624 18.1015C8.95624 17.8023 9.07055 17.5285 9.25751 17.3295C9.33087 17.2513 9.41573 17.1844 9.50951 17.1318V16.6132H2.38481C2.10238 16.6132 1.89439 16.3731 1.89439 16.1039V3.07808H1.87705C1.36167 3.07808 1.02507 2.7648 0.880564 2.38203L0.880448 2.38173C0.827088 2.23969 0.8 2.08799 0.8 1.93904C0.8 1.79018 0.82692 1.63857 0.880492 1.49624L0.880569 1.49603C1.0251 1.11331 1.36159 0.800052 1.87698 0.800052H18.1229C18.6383 0.800052 18.9749 1.11334 19.1194 1.49636C19.1194 1.49638 19.1194 1.49639 19.1195 1.4964L18.9323 1.56699C18.9774 1.68651 19 1.81423 19 1.93935C19 2.06447 18.9773 2.19234 18.9323 2.31141L9.25866 18.8739ZM9.25866 18.8739C9.4458 19.073 9.70806 19.2 9.99994 19.2C10.2919 19.2 10.5542 19.0729 10.7418 18.8731L10.596 18.7362L10.7418 18.8731C10.9292 18.6736 11.0438 18.4003 11.0438 18.1015C11.0438 17.8024 10.9295 17.5285 10.7425 17.3295C10.6691 17.2514 10.5843 17.1844 10.4905 17.1318V16.6132H17.6152C17.8976 16.6132 18.1056 16.3731 18.1056 16.104V3.07809L9.25866 18.8739ZM18.2075 2.01148L18.2074 2.01175C18.2014 2.02768 18.1928 2.03807 18.1834 2.0447C18.1747 2.05078 18.1571 2.05961 18.1227 2.05961H1.87671C1.84217 2.05961 1.82464 2.05078 1.81606 2.04474C1.80672 2.03816 1.79804 2.02777 1.79195 2.01162L1.60479 2.08213L1.7921 2.012C1.78568 1.99486 1.78062 1.96956 1.78062 1.93917C1.78062 1.90861 1.78559 1.88367 1.79206 1.86644L1.60479 1.79621L1.792 1.86659C1.79799 1.85066 1.80662 1.84027 1.81603 1.83364C1.82466 1.82755 1.84224 1.81873 1.87671 1.81873H18.1227C18.1571 1.81873 18.1746 1.82754 18.1832 1.8336C18.1925 1.84015 18.2012 1.8505 18.2073 1.86657C18.2138 1.88442 18.2188 1.9095 18.2188 1.93946C18.2188 1.97012 18.2138 1.99486 18.2075 2.01148ZM9.95989 18.0407C9.97172 18.0281 9.98502 18.0225 9.99687 18.0217H10.0028C10.0154 18.0226 10.0289 18.0285 10.0403 18.0407C10.0531 18.0543 10.063 18.0755 10.063 18.1016C10.063 18.1284 10.0527 18.1501 10.0406 18.1633C10.0289 18.1755 10.0144 18.1814 10.0001 18.1814C9.98607 18.1814 9.97137 18.1755 9.9594 18.163C9.94748 18.1501 9.93724 18.1286 9.93724 18.1016C9.93724 18.0755 9.94713 18.0543 9.95989 18.0407ZM2.87509 3.0782H17.1245V15.5944H2.87509V3.0782Z" fill="url(#paint0_linear_1_657)" stroke="url(#paint1_linear_1_657)" stroke-width="0.4"/>
+                  <path d="M8.7886 7.84742L8.78867 7.84735C8.93942 7.70491 9.1724 7.70649 9.32103 7.85708L8.7886 7.84742ZM8.7886 7.84742L3.99756 12.3832L3.99755 12.3832M8.7886 7.84742L3.99755 12.3832M14.4255 6.31221C14.442 6.43977 14.5142 6.54814 14.6153 6.61006L11.2302 9.78906L9.32109 7.85714L15.8328 7.19039L16.1134 6.23744L16.1135 6.2372C16.1296 6.18191 16.1347 6.12247 16.127 6.06232L16.1269 6.06207C16.0985 5.84384 15.9057 5.68041 15.6863 5.71288L15.686 5.71292L14.7572 5.8524L14.7718 5.95132L14.757 5.85243L14.7571 5.85241C14.5394 5.88468 14.3972 6.09502 14.4255 6.31221ZM14.4255 6.31221L14.5246 6.29938L14.4255 6.31232C14.4255 6.31228 14.4255 6.31224 14.4255 6.31221ZM3.99755 12.3832C3.83909 12.5332 3.82614 12.7885 3.96574 12.9558L3.96578 12.9559M3.99755 12.3832L3.96578 12.9559M3.96578 12.9559C4.1087 13.127 4.35871 13.1429 4.52067 12.9897L4.52071 12.9897M3.96578 12.9559L4.52071 12.9897M4.52071 12.9897L9.04184 8.70971M4.52071 12.9897L9.04184 8.70971M9.04184 8.70971L10.9494 10.6395L9.04184 8.70971ZM11.4803 10.6497C11.327 10.7939 11.0949 10.7873 10.9496 10.6397L11.4803 10.6497ZM11.4803 10.6497L15.107 7.24365C15.1511 7.3426 15.2328 7.42379 15.3425 7.46007M11.4803 10.6497L15.8328 7.19059C15.7707 7.40248 15.5537 7.53019 15.3425 7.46007M15.3425 7.46007C15.3424 7.46005 15.3424 7.46004 15.3423 7.46003L15.3739 7.36513L15.3425 7.46007Z" fill="url(#paint2_linear_1_657)" stroke="url(#paint3_linear_1_657)" stroke-width="0.2"/>
+                  </g>
+                  <defs>
+                  <linearGradient id="paint0_linear_1_657" x1="10" y1="1" x2="10" y2="19" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#94D145"/>
+                  <stop offset="1" stop-color="#52B623"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_1_657" x1="10" y1="1" x2="10" y2="19" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#94D145"/>
+                  <stop offset="1" stop-color="#52B623"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_1_657" x1="9.99988" y1="5.80884" x2="9.99988" y2="12.9951" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#94D145"/>
+                  <stop offset="1" stop-color="#52B623"/>
+                  </linearGradient>
+                  <linearGradient id="paint3_linear_1_657" x1="9.99988" y1="5.80884" x2="9.99988" y2="12.9951" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#94D145"/>
+                  <stop offset="1" stop-color="#52B623"/>
+                  </linearGradient>
+                  <clipPath id="clip0_1_657">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                  </svg>                  
+              <p class="comparison down">-35% Compared to August</p>
+              </div>
+            </div>
+
+            <!-- Total Break Hours Card -->
+            <div class="stat-card">
+              <p>Total Break Hours / Per Month</p>
+              <div class="d-flex gap-2">
+              <div class="card-time-box">
+              <p style="margin: 0;">00 Hours</p> 
+              <p style="margin: 0;">40 Minutes</p>
+              <p style="margin: 0;">55 Seconds</p>
+              </div>
+              <canvas id="breakHoursChart"></canvas>
+              </div>
+              <p class="comparison down">-13% Compared to January</p>
+            </div>
+
+            <!-- Total Working Hours Card -->
+            <div class="stat-card">
+              <p>Total Working Hours / Per Month</p>
+              <p>00 Hours 40 Minutes 55 Seconds</p>
+              <p class="comparison up">+43% Compared to January</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS -->
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="./js/myaccount.js"></script>
+    <script src="./js/dashoard.js"></script>
     <script src="./js/script.js"></script>
     <!-- <script src="./js/myaccount.js"></script> -->
   </body>
