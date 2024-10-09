@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
         console.error("There was a problem dispalying data:", error)
-        alert("Failed to display content. please try again later")
     })
 })
 

@@ -26,7 +26,6 @@ function fetchAvatar() {
     })
     .catch(error => {
       console.error("Error fetching avatar:", error);
-      alert("Failed to load avatar.");
     });
 }
 
@@ -104,13 +103,10 @@ function cropImage() {
 
           alert("Avatar uploaded successfully!");
           closeModal(); // Close the modal after saving
-        } else {
-          alert("Failed to upload avatar.");
         }
       })
       .catch(error => {
         console.error("Error uploading avatar:", error);
-        alert("Failed to upload avatar.");
       });
   }, "image/png"); // Convert canvas to Blob in PNG format
 }
@@ -149,9 +145,7 @@ function updateAvatar() {
 
           alert("Avatar updated successfully!");
           closeModal(); // Close modal after updating
-        } else {
-          alert("Failed to update avatar.");
-        }
+        } 
       })
       .catch(error => {
         console.error("Error updating avatar:", error);
@@ -162,17 +156,6 @@ function updateAvatar() {
 
 // Call fetchAvatar on page load to display the user's current avatar
 document.addEventListener("DOMContentLoaded", fetchAvatar);
-
-
-let accountUserNameDiv = document.getElementById("accountUserNameDiv");
-let accountUserRoleDiv = document.getElementById("accountUserRoleDiv");
-
-let firstName = localStorage.getItem("firstName");
-let lastName = localStorage.getItem("lastName");
-let userRole = localStorage.getItem("userRole");
-
-accountUserNameDiv.innerHTML = `<h1 class="text-center usernameStyle"> ${firstName} ${lastName}</h1>`;
-accountUserRoleDiv.innerHTML = `<p class="text-center userRoleStyle"> ${userRole} </p>`;
 
 //account details function
 document.addEventListener("DOMContentLoaded", () => {
@@ -203,6 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then(response => response.json())
     .then(data => {
+      // Displaying user  names and role using the get request 
+      let accountUserNameDiv = document.getElementById("accountUserNameDiv");
+      let accountUserRoleDiv = document.getElementById("accountUserRoleDiv");
+
+      accountUserNameDiv.innerHTML = `<h1 class="text-center usernameStyle"> ${data.First_Name} ${data.Last_Name}</h1>`;
+      accountUserRoleDiv.innerHTML = `<p class="text-center userRoleStyle"> ${data.Role} </p>`;
+
       // Populate the fields with the unique user data
       console.log("userdata:", data);
       document.getElementById("employeeId").value = data.Employee_ID;
