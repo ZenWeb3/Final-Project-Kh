@@ -454,6 +454,12 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(postData)
       }).then(response => response.json())
         .then (data => {
+          
+          alert("Your attendance has been saved. Welldone")
+
+          // Redirect user to the student report page
+          window.location.href = './studentreport.html'
+
           console.log("Attendance has been saved successfully", data)
         })
         .catch(error => console.error("Error submitting attendance:",error))

@@ -18,6 +18,16 @@ const formatTime = (timeStr) => {
     return `${hours}:${minutes}:${seconds} ${period}`;
 };
 
+const formatTimeClock = (clockStr) => {
+    let [hours, minutes, seconds] =clockStr.split(":")
+  
+    hours = parseInt(hours);
+    minutes = parseInt(minutes)
+    seconds = parseInt( seconds.split(".")[0]);  // Removing milliseconds
+
+    return `${hours} Hr ${minutes} Mins ${seconds} Secs`
+}
+
 const getAttendanceTable = (data) => {
     const tableBody = document.getElementById("attendance-table-body")
     tableBody.innerHTML = "" // Clear existing content
@@ -28,8 +38,8 @@ const getAttendanceTable = (data) => {
             <td class="td-style">${row.date}</td>
             <td class="td-style">${formatTime(row.time_in)}</td>
             <td class="td-style">${formatTime(row.time_out)}</td>
-            <td class="td-style">${formatTime(row.break_hours)}</td>
-            <td class="td-style">${formatTime(row.working_hours)}</td>
+            <td class="td-style">${formatTimeClock(row.break_hours)}</td>
+            <td class="td-style">${formatTimeClock(row.working_hours)}</td>
        </tr>
     `
    });
@@ -62,4 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("There was a problem dispalying data:", error)
         alert("Failed to display content. please try again later")
     })
+})
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+    alert("Feature Coming Soon")
 })

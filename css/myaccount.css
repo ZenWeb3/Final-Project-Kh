@@ -93,6 +93,10 @@
   align-items: center;
 }
 
+.modal p{
+  margin:0 !important ;
+}
+
 .modal-content {
   position: relative;
   background-color: white;
@@ -106,8 +110,6 @@
 }
 
 .close {
-  position: absolute;
-  top: 10px;
   right: 20px;
   color: rgb(255, 0, 0);
   cursor: pointer;
@@ -128,6 +130,8 @@
   background-color: #007bff;
   padding: 5px 0;
   font-weight: 500;
+  color: white;
+  border-radius: 0 0 6px 6px;
 }
 
 .cropper-modal {
