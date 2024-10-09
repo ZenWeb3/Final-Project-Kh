@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if the user is logged in
+  let userLoggedIn = localStorage.getItem("userToken") || sessionStorage.getItem("userToken"); // Assuming userToken is stored in localStorage
+
+  if (!userLoggedIn) {
+    alert("Login to continue.");
+    window.location.href = './login.html';
+
+    // Optional: Another alert after redirect with a delay
+    setTimeout(() => {
+      alert("Redirecting, please wait");
+    }, 1000);
+  }
+});
+
 window.onload = () => {
   //fetch user details from local storage
   let firstName = localStorage.getItem("firstName");
@@ -20,18 +35,5 @@ window.onload = () => {
     // Redirect user to the login page
     window.location.href = './login.html'
   });
-
-  // if there isnt a token found
-  const userLoggedIn =
-    localStorage.getItem("userToken") || sessionStorage.getItem("userToken");
-
-  if (!userLoggedIn) {
-    alert("Login to continue.");
-    window.location.href = './login.html'
-
-    setTimeout(() => {
-      alert("Redirecting please wait");
-    }, 1000);
-  }
 };
 

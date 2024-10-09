@@ -100,6 +100,8 @@ function cropImage() {
             img.src = data.picture_url;
           });
 
+          window.location.href = './myaccount.html'
+
           alert("Avatar uploaded successfully!");
           closeModal(); // Close the modal after saving
         } else {
