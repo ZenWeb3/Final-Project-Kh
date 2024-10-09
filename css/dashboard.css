@@ -1,90 +1,363 @@
-body{
-    box-sizing: border-box;
+body {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
 }
 .statistics-container .row {
-    display: flex;
-    gap: 16px;
-    justify-content: space-between;
-    margin: 20px 0;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+p {
+  margin: 0 !important;
 }
 
 .stat-card {
-    background-color: #fff;
-    border: 1px solid #C6E6FB;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px #C6E6FB;
-    padding: 20px !important;
-    height: 204px;
-    flex: 1; 
-    min-width: 200px;
+  background-color: #fff;
+  border: 1px solid #c6e6fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px #c6e6fb;
+  padding: 20px !important;
+  height: 204px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .stat-card p {
-    font-size: 15px;
-    font-weight:500;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .percentage {
-    font-size: 2.5rem;
-    margin: 0;
-    color: #333;
+  font-size: 2.5rem;
+  margin: 0;
+  color: #333;
 }
 
 .comparison {
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
 }
 
 .comparison.up {
-    color: green;
+  color: green;
 }
 
 .comparison.down {
-    color: rgb(153, 149, 149);
-    font-weight: 500;
-    font-size: 12px;
+  color: rgb(153, 149, 149);
+  font-weight: 500;
+  font-size: 12px;
 }
 
-.card-time-box{
-    width: 99px;
-    height: 88px !important;
+.card-time-box {
+  width: 99px;
+  height: 88px !important;
 }
 
-
-.card-time-box p{
-    font-size: 12px !important
+.card-time-box p {
+  font-size: 12px !important;
 }
-
-
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 .align-items-center {
-    align-items: center;
+  align-items: center;
 }
 
-
 .stat-card:nth-child(1) h1 {
-    color: #4caf50; /* Green for On Time */
+  color: #4caf50; /* Green for On Time */
 }
 
 .stat-card:nth-child(2) h1 {
-    color: #f44336; /* Red for Late */
+  color: #f44336; /* Red for Late */
 }
 
 .stat-card:nth-child(3) h1 {
-    color: #f44336; /* Red for Break Hours */
+  color: #f44336; /* Red for Break Hours */
 }
 
 .stat-card:nth-child(4) h1 {
-    color: #2196f3; /* Blue for Working Hours */
+  color: #2196f3; /* Blue for Working Hours */
 }
 
-  
-  canvas {
-    overflow:hidden ;
-    max-width: 80% !important; /* Ensure canvas fits within its parent */
-    height: 100px !important; /* Adjust the height as needed */
-  }
+canvas {
+  overflow: hidden;
+  max-width: 80% !important; /* Ensure canvas fits within its parent */
+  height: 100px !important; /* Adjust the height as needed */
+}
+
+.calendar-container {
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  padding: 20px;
+}
+.calendar-header {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 10px;
+}
+.calendar-day-name {
+  text-align: center;
+  font-weight: 500;
+  color: rgba(90, 145, 203, 1);
+
+  padding-bottom: 5px;
+}
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.calendar-day {
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+.calendar-day:hover {
+  background-color: #dce6f1;
+}
+.calendar-day.today {
+  background: rgba(90, 145, 203, 1);
+  color: white;
+}
+
+.col-lg-8 {
+  width: 68% !important;
+  padding: 0 !important;
+}
+
+.col-md-3 {
+  padding-right: 0 !important;
+  width: 30% !important;
+}
+
+.row {
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.clock-container-parent {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  height: 354px;
+  display: flex;
+  gap: 16px;
+}
+
+.mainContent-bg {
+  padding: 0 5%;
+}
+
+.clock-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.clock {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 10px solid rgba(2, 222, 238, 0.5); /* Light blue border similar to the image */
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(2, 222, 238, 0.5);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* Fix visual alignment */
+}
+
+.hand {
+  width: 50%;
+  height: 2px;
+  background-color: black; /* Black hand color */
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition-timing-function: cubic-bezier(0.4, 2.3, 0.3, 1);
+  transition: all 0.05s;
+}
+
+.hour-hand {
+  height: 3px; /* Thicker hand for the hour */
+  background-color: darkblue; /* Dark blue hour hand */
+}
+
+.minute-hand {
+  background-color: black; /* Standard black minute hand */
+}
+
+.second-hand {
+  background-color: hotpink; /* Pink second hand */
+  height: 1px;
+}
+
+#timeDisplay {
+  font-size: 1.2rem;
+  color: #233d64;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.stopClockDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+#workingHours,
+#breakHours {
+  width: 200px;
+  padding: 15px;
+  border-radius: 12px;
+  height: fit-content;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+}
+
+#workTimer,
+#breakTimer {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.motivationDiv {
+  height: 176px;
+  width: 100%;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  border-radius: 12px;
+}
+
+.motivationDiv img {
+  width: 150px;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+.child-container {
+  display: flex;
+}
+
+#successQuote {
+  color: rgba(29, 155, 240, 1);
+  font-size: 12px;
+}
+
+.btns {
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+#punchInBtn {
+  background: linear-gradient(180deg, #94d145 0%, #52b623 100%);
+  border-radius: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  color: white;
+  font-weight: 500;
+}
+
+#stopBreakBtn{
+  border-radius: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(180deg, #FFB37F 0%, #FF7A00 100%);
+}
+
+.stopBreak{
+  display: none;
+  gap: 16px;
+  text-align: center;
+}
+
+.punchInDiv {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+}
+
+.punch-active-div {
+  margin-top: 16px;
+  display: none;
+  /* display: flex; */
+  gap: 16px;
+}
+
+.break-in {
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.punchOut {
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#breakInBtn{
+  background: linear-gradient(180deg, #7BB8FF 0%, #2E86ED 100%);
+  border-radius: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+}
+
+#punchOutBtn{
+  background: linear-gradient(180deg, #FF9C8E 0%, #F5533D 100%);
+  border-radius: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+}

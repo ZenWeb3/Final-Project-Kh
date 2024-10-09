@@ -11,8 +11,10 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+  
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/studentreport.css">
     <!-- FontAwesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -189,7 +191,43 @@
           </a>
         </div>
       </div>
-      <div class="mainContent-bg w-100"></div>
+      <div class="mainContent-bg w-100">
+        <div class="container mt-5">
+          <p class="fw-bolder fs-5">Attendance Record</p>
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Date</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th>Break Hours</th>
+                <th>Working Hours</th>
+    
+              </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+              <!-- Data to be injected here by JavaScript -->
+            </tbody>
+          </table>
+      
+          <!-- Legend for status icons
+          <div class="legend text-center">
+            <span class="legend-item on-time">On Time</span>
+              <span class="legend-item late">Late</span>
+          </div> -->
+      
+          <!-- Pagination -->
+          <div class="d-flex justify-content-end mt-3">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      
     </div>
 
     <!-- Bootstrap JS -->
@@ -199,5 +237,6 @@
 
     <script src="./js/myaccount.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/studentreport.js"></script>
   </body>
 </html>

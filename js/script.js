@@ -8,7 +8,7 @@ window.onload = () => {
     //insert the name into the userName div
     let userNameDiv = document.getElementById("userName");
     let dropdownProfileDiv = document.getElementById("dropdownProfile");
-    dropdownProfileDiv.innerHTML = `<p class="fw-bold text-center"> ${firstName} ${lastName}`;
+    dropdownProfileDiv.innerHTML = `<p class="fw-bold text-center"> ${firstName} ${lastName}</p>`;
     userNameDiv.innerHTML = `<h1>${firstName} ${lastName}</h1>`;
   }
 
@@ -16,6 +16,9 @@ window.onload = () => {
   const logoutBtn = document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.removeItem("userToken") ||
     sessionStorage.removeItem("userToken");
+
+    // Redirect user to the login page
+    window.location.href = './login.html'
   });
 
   // if there isnt a token found
