@@ -25,11 +25,11 @@ const getAttendanceTable = (data) => {
    data.forEach(row => {
     tableBody.innerHTML += `
        <tr>
-        <td>${row.date}</td>
-            <td>${formatTime(row.time_in)}</td>
-            <td>${formatTime(row.time_out)}</td>
-            <td>${formatTime(row.break_hours)}</td>
-            <td>${formatTime(row.working_hours)}</td>
+            <td class="td-style">${row.date}</td>
+            <td class="td-style">${formatTime(row.time_in)}</td>
+            <td class="td-style">${formatTime(row.time_out)}</td>
+            <td class="td-style">${formatTime(row.break_hours)}</td>
+            <td class="td-style">${formatTime(row.working_hours)}</td>
        </tr>
     `
    });

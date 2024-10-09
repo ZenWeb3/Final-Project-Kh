@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <nav class="navbar border-bottom navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar border-bottom navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid padding-style">
         <a class="navbar-brand fs-2" href="./index.html">CheckMate</a>
         <button
@@ -85,7 +85,7 @@
 
     <div class="d-flex" id="wrapper">
       <!-- Sidebar Section -->
-      <div class="bg-primary custom-sidebar bg-light">
+      <div class="bg-primary custom-sidebar bg-white shadow-lg">
         <!-- User Name Section -->
         <div id="userName">John Doe</div>
 
@@ -191,18 +191,19 @@
           </a>
         </div>
       </div>
+
       <div class="mainContent-bg w-100">
         <div class="container mt-5">
           <p class="fw-bolder fs-5">Attendance Record</p>
-          <table class="table table-bordered table-hover align-middle">
-            <thead class="table-light">
-              <tr>
-                <th>Date</th>
-                <th>Time In</th>
-                <th>Time Out</th>
-                <th>Break Hours</th>
-                <th>Working Hours</th>
-    
+          <table class="table table-style bg-white table-white align-middle">
+            <thead class="table-white">
+              <tr class="table-white">
+                <th scope="col">Date <i class="fas fa-sort"></i></th>
+                <th scope="col">Time In <i class="fas fa-sort"></i></th>
+                <th scope="col">Time Out <i class="fas fa-sort"></i></th>
+                <th scope="col">Break Hours <i class="fas fa-sort"></i></th>
+                <th scope="col">Working Hours <i class="fas fa-sort"></i></th>
+                
               </tr>
             </thead>
             <tbody id="attendance-table-body">

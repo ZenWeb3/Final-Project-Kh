@@ -1,22 +1,10 @@
 .status-icon {
     font-size: 1.2rem;
   }
-  .on-time {
-    background-color: lightgreen;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    margin-right: 5px;
-}
 
-.late {
-    background-color: lightcoral;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    margin-right: 5px;
+  
+tr{
+  height:20px ;
 }
   .table th, .table td {
     text-align: center;
@@ -39,6 +27,18 @@
     margin-right: 20px;
 }
 
-table{
-    border-radius: 12px !important;
+.table-style{
+  border-radius: 12px !important;
+  border: 1px solid rgba(198, 230, 251, 1);
+  box-shadow: 0 1px 4px 0 rgba(88, 134, 166, 0.25);
+  padding: 20px 0;
+}
+
+.table-style  th{
+    border-radius: 12px  !important;
+
+}
+
+.td-style{
+  height: 10px !important;
 }
