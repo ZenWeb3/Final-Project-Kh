@@ -65,6 +65,7 @@ function closeModal() {
   if (cropper) {
     cropper.destroy(); // Destroy the cropper instance when closing
   }
+  window.location.reload()
 }
 
 // Function to upload the cropped image
@@ -99,10 +100,13 @@ function cropImage() {
             img.src = data.picture_url;
           });
 
-          window.location.href = './myaccount.html'
-
-          alert("Avatar uploaded successfully!");
+          alert("Avatar uploaded successfully!"); // Show the alert first
           closeModal(); // Close the modal after saving
+
+          // Delay the page reload so the alert and modal close actions have time
+          setTimeout(() => {
+            window.location.reload(); // Reload the current page
+          }, 1000); // Delay reload by 1 second (1000 ms)
         }
       })
       .catch(error => {
@@ -142,9 +146,6 @@ function updateAvatar() {
           avatarImages.forEach(img => {
             img.src = data.picture_url;
           });
-
-          alert("Avatar updated successfully!");
-          closeModal(); // Close modal after updating
         } 
       })
       .catch(error => {
