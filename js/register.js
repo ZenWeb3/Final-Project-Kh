@@ -1,3 +1,4 @@
+// import swal from 'sweetalert';
 document.getElementById("registerForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -16,7 +17,6 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
 
   // Checking for empty input fields
   if (!firstName || !lastName || !dob || !gender || !email || !contact || !role || !password) {
-    alert("Please fill in all fields.");
     return;
   }
 
@@ -46,19 +46,22 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
 
     // Adjust this based on the actual response structure
     if (data) {
-     // Store the first and last name in localStorage or sessionStorage
-      localStorage.setItem("firstName", firstName);
-      localStorage.setItem("lastName", lastName);
-      localStorage.setItem("userRole", role)
-      alert("You have successfully registered! Redirecting to login.");
-      window.location.href = './login.html';
+      Swal.fire({
+        "title" : "Registered Successfully!", 
+        "text" : "Redirecting to the login page!", 
+        "icon" : "success",
+        showConfirmButton : false
+      });
+      
+      setTimeout( () => {
+        window.location.href = './login.html'
+      }, 1500)
     } else {
-      alert("Registration failed: " + (data.message || "Unknown error"));
+      Swal.fire("Registration failed", "Tryagain Later", "error");
     }
 })
 .catch(error => {
     console.error("Error:", error);
-    alert("An error occurred during registration. Please try again.");
 });
 
 });

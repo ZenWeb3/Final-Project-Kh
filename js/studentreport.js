@@ -74,5 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 document.getElementById("exportBtn").addEventListener("click", () => {
-    alert("Feature Coming Soon")
+    swal.fire({
+        "title" : "Coming Soon",
+        "icon" : "info",
+        showConfirmButton : false
+    })
 })

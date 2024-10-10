@@ -93,20 +93,23 @@ function cropImage() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.picture_url) {
-          // Update the displayed avatar image with the new URL
-          const avatarImages = document.querySelectorAll(".userImage");
-          avatarImages.forEach(img => {
-            img.src = data.picture_url;
-          });
+        if (data) {
+          // // Update the displayed avatar image with the new URL
+          // const avatarImages = document.querySelectorAll(".userImage");
+          // avatarImages.forEach(img => {
+          //   img.src = data.picture_url;
+          // });
 
-          alert("Avatar uploaded successfully!"); // Show the alert first
-          closeModal(); // Close the modal after saving
+          swal.fire({
+            "title" : "Avatar uploaded successfully",
+            "icon" : "success",
+            showConfirmButton : false
+          }) // Show the alert first
 
           // Delay the page reload so the alert and modal close actions have time
           setTimeout(() => {
-            window.location.reload(); // Reload the current page
-          }, 1000); // Delay reload by 1 second (1000 ms)
+            closeModal(); // Close the modal after saving
+          }, 1500); // Delay reload by 1 second (1000 ms)
         }
       })
       .catch(error => {
@@ -150,7 +153,15 @@ function updateAvatar() {
       })
       .catch(error => {
         console.error("Error updating avatar:", error);
-        alert("Failed to update avatar.");
+        swal.fire({
+          "title": "Sorry",
+          "text" : "Cannot upload picture twice!",
+          "icon" : "error"
+        })
+
+        setTimeout( () => {
+          window.location.reload()
+        }, 1000)
       });
   }, "image/png");
 }
@@ -208,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
       console.error("Error fetching user details:", error);
-      alert("Failed to load account details.");
     });
 
   // Make form editable
@@ -254,15 +264,16 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then(response => response.json())
       .then(data => {
-        alert("Account details updated successfully!");
+        Swal.fire({
+          "title" : "Action Completed!",
+          "icon" : "success",
+          showConfirmButton : false
+        })
 
-        // Update the values in localStorage
-        localStorage.setItem("firstName", updatedDetails.First_Name);
-        localStorage.setItem("lastName", updatedDetails.Last_Name);
-        localStorage.setItem("userRole", updatedDetails.Role);
-
-        // Reload page to reflect changes immediately
+        // Reload page to reflect changes after a second delay
+        setTimeout ( () => {
         window.location.reload();
+        }, 1000)
 
         // Disable fields and hide save/discard buttons
         inputs.forEach(input => input.setAttribute("disabled", true));
@@ -271,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => {
         console.error("Error updating user details:", error);
-        alert("Failed to update account details.");
+        swal.fire("Oops", "Failed to update account details.", "error" );
       });
   });
 
@@ -303,12 +314,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
     if (newPassword !== confirmPassword) {
-      alert("New Password and Confirm Password do not match");
+      Swal.fire({
+        "title" : "Oops",
+        "text" : "the new and confirm password doesnt match!",
+        "icon" : "error"
+      })
       return;
     }
 
     if (oldPassword === newPassword) {
-      alert("Old Password and New Password cannot be the same");
+    
+      Swal.fire({
+        "title" : "Oops",
+        "text" : "Old Password and New Password cannot be the same",
+        "icon" : "error"
+      })
       return;
     }
 
@@ -331,20 +351,29 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then((data) => {
       if (data) {
-        // alert user
-        alert("Password reset successfully!");
-
         //redirect user to the login page by removing the user token from either storages
         localStorage.removeItem("userToken") || sessionStorage.removeItem("userToken")
         
-        window.location.href = './login.html'
+         // alert user
+         Swal.fire({
+          "title" : "You're All Set!, Redirecting ...",
+          "icon" : "success",
+          showConfirmButton : false
+        })
+
+        setTimeout( () => {
+           window.location.href = './login.html'
+        }, 1000)
       } else {
-        alert("Incorrect old password. Please try again later");
+        Swal.fire({
+          "title" : "Oops!, incorrect old password",
+          "icon" : "error",
+          showConfirmButton : false
+        })
       }
     })
     .catch(error => {
       console.error("Encountered an error:", error);
-      alert("An error occurred. Please try again.");
     });
   });
 });

@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let userLoggedIn = localStorage.getItem("userToken") || sessionStorage.getItem("userToken"); // Assuming userToken is stored in localStorage
 
   if (!userLoggedIn) {
-    alert("Login to continue.");
-    window.location.href = './login.html';
-
-    // Optional: Another alert after redirect with a delay
+    Swal.fire({
+      title: "Oops!",
+      text: "Please login to continue!",
+      icon: "info",
+      showConfirmButton: false
+    });
+    // redirect after a delay
     setTimeout(() => {
-      alert("Redirecting, please wait");
-    }, 1000);
+      window.location.href = './login.html';
+    }, 1500);
   }
 });
 

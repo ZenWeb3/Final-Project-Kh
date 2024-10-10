@@ -455,10 +455,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }).then(response => response.json())
         .then (data => {
           
-          alert("Your attendance has been saved. Welldone")
+        Swal.fire({
+          "title": "Welldone",
+          "text": "Your attendance has been saved",
+          "icon": "success",
+          showConfirmButton: false
+        })
 
-          // Redirect user to the student report page
-          window.location.href = './studentreport.html'
+          // Redirect user to the student report page after a second delay
+          setTimeout( () => {
+            window.location.href = './studentreport.html'
+          }, 1500)
 
           console.log("Attendance has been saved successfully", data)
         })

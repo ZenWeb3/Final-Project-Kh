@@ -1,3 +1,4 @@
+// import swal from 'sweetalert';
 document.getElementById("loginForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -8,7 +9,6 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
 
   //validate input
   if (!loginEmail || !loginPassword) {
-    alert("please enter both email and password")
     return;
   }
 
@@ -29,22 +29,32 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
 
     // if successful save token
     if (data.token) {
-      alert("Login Successful");
-
       //store token based on Remember Me checkbox
       if (rememberMe) {
         localStorage.setItem("userToken", data.token);
       } else {
         sessionStorage.setItem("userToken", data.token)
       }
-
-      window.location.href = './index.html'
+      Swal.fire({
+        title: "Login Successful!",
+        text: "Redirecting to the Dashboard!",
+        icon: "success",
+        showConfirmButton: false
+      })
+      setTimeout( () => {
+        window.location.href = './index.html'
+      }, 1500)
     } else {
-      alert("login failed: Incorrect Email or Password")
+      Swal.fire("Login Failed", "Incorrect email or password", "error");
+      Swal.fire({
+        title: "Login Failed!",
+        text: "Incorrect email or password!",
+        icon: "error",
+        showConfirmButton: false
+      });
     }
   })
   .catch(error => {
     console.error("Error:", error.message);
-    alert("An error occured during login" + error.message)
   })
 });
